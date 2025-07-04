@@ -1,0 +1,11 @@
+.flex {
+  margin-bottom: 16px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-checkbox {
+  margin: 16px 0;
+}

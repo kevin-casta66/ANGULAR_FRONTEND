@@ -1,0 +1,88 @@
+<div class="mat-elevation-z2" style="width: 30%; padding: 30px; margin: 50px auto; display: flex;justify-content: center;">
+    <form [formGroup]="formEmpleado">
+        <!-- Nombre -->
+        <div class="flex">
+            <mat-form-field>
+                <mat-label>Nombre Completo</mat-label>
+                <input matInput formControlName="nombre" required>
+                <mat-error *ngIf="formEmpleado.get('nombre')?.hasError('required')">
+                  Nombre es requerido
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <!-- Correo -->
+        <div class="flex">
+            <mat-form-field>
+                <mat-label>Correo</mat-label>
+                <input matInput formControlName="correo" required>
+                <mat-error *ngIf="formEmpleado.get('correo')?.hasError('required')">
+                  Correo es requerido
+                </mat-error>
+                <mat-error *ngIf="formEmpleado.get('correo')?.hasError('email')">
+                  Ingrese un correo válido
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <!-- Cargo -->
+        <div class="flex">
+            <mat-form-field>
+                <mat-label>Cargo</mat-label>
+                <input matInput formControlName="cargo" required>
+                <mat-error *ngIf="formEmpleado.get('cargo')?.hasError('required')">
+                  Cargo es requerido
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <!-- Departamento -->
+        <div class="flex">
+            <mat-form-field>
+                <mat-label>Departamento</mat-label>
+                <input matInput formControlName="departamento">
+            </mat-form-field>
+        </div>
+
+        <!-- Teléfono -->
+        <div class="flex">
+            <mat-form-field>
+                <mat-label>Teléfono</mat-label>
+                <input matInput formControlName="telefono" required>
+                <mat-error *ngIf="formEmpleado.get('telefono')?.hasError('required')">
+                  Teléfono es requerido
+                </mat-error>
+                <mat-error *ngIf="formEmpleado.get('telefono')?.hasError('pattern')">
+                  Ingrese 10 dígitos numéricos
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <!-- Fecha Contrato -->
+        <div class="flex">
+            <mat-form-field>
+                <mat-label>Fecha Contrato</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="fechaContrato" required>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="formEmpleado.get('fechaContrato')?.hasError('required')">
+                  Fecha es requerida
+                </mat-error>
+                <mat-error *ngIf="formEmpleado.get('fechaContrato')?.hasError('fechaFutura')">
+                  La fecha no puede ser futura
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <!-- Activo -->
+        <div class="flex">
+            <mat-checkbox formControlName="activo">Activo</mat-checkbox>
+        </div>
+
+        <!-- Botones -->
+        <div class="flex">
+            <button mat-flat-button color="primary" (click)="guardar()">Guardar</button>
+            <button mat-flat-button color="warn" (click)="volver()" style="margin-left: 8px;">Volver</button>
+        </div>
+    </form>
+</div>
